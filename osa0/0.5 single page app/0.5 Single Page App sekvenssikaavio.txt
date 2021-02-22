@@ -1,0 +1,13 @@
+title 0.5 Single Page App sekvenssikaavio
+note left of selain: käyttäjä menee sivulle https://studies.cs.helsinki.fi/exampleapp/spa
+selain->serveri: HHTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+serveri-->selain: ojentaa text/html; charset=utf-8
+selain->serveri: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+serveri-->selain: ojentaa main.css
+selain->serveri: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+serveri-->selain: ojentaa aspa.js , application/javascript; charset=UTF-8
+selain->serveri: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+serveri-->selain: ojentaa data.json, application/json; charset=utf-8
+note left of selain: sivu renderöityy 
+
+

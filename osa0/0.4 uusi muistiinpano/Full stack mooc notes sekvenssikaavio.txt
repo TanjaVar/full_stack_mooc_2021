@@ -1,0 +1,19 @@
+title Full stack mooc notes sekvenssikaavio
+note left of selain: käyttäjä painaa submit nappulaa
+selain->serveri: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+note right of serveri: serveri luo olion listaan
+serveri-->selain: HTTP status 302 "lataa uudelleen"
+note left of selain: serveri pyytää uudelleen hakemaan listan tiedot ja selain tekee niin
+selain->serveri: HTTP GET notes https://studies.cs.helsinki.fi/exampleapp/notes
+serveri-->selain: ojentaa listan
+selain-> serveri: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+serveri-->selain: ojentaa tyylitiedoston
+selain-> serveri: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+serveri-->selain: ojentaa main.js 
+selain->serveri: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+serveri-->selain: ojentaa json tiedoston
+note left of selain: Sivu on renderöity nyt valmiiksi
+
+
+
+
