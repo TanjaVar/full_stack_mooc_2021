@@ -10,6 +10,17 @@ koostuu kolmesta uudesta komponentista: Header,
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+//1.2 kurssitiedot, step2
+/*Refaktoroi vielä komponentti Content siten, että se ei itse renderöi 
+yhdenkään osan nimeä eikä sen tehtävälukumäärää vaan ainoastaan 
+kolme Part-nimistä komponenttia, joista kukin siis renderöi yhden 
+osan nimen ja tehtävämäärän.*/
+const Part = (props) => {
+  return (
+    <p>{props.part} {props.ex}</p>
+  )
+}
+
 //Header huolehtii kurssin nimen renderöimisestä
 const Header = (props) => {
   return (
@@ -23,7 +34,9 @@ const Header = (props) => {
 const Content = (props) => {
   return (
     <div>
-      <p>{props.part} {props.ex}</p>
+      <Part part={props.p1} ex={props.e1}/>
+      <Part part={props.p2} ex={props.e2}/>
+      <Part part={props.p3} ex={props.e3}/>
     </div>
 
   )
@@ -42,7 +55,7 @@ const Total = (props) => {
 const App = () => {
   // All data is stored in component 'App'
   const course = 'Half Stack application development'
-  const part1 = 'fundalmentals of React'
+  const part1 = 'Fundalmentals of React'
   const exercises1 = 10
   const part2 = 'Using props to pass data'
   const exercises2 = 7
@@ -52,9 +65,7 @@ const App = () => {
   return (
     <div>
       <Header courseName={course} />
-      <Content part={part1} ex={exercises1}/>
-      <Content part={part2} ex={exercises2}/>
-      <Content part={part3} ex={exercises3}/>
+      <Content p1={part1} p2={part2} p3={part3} e1={exercises1} e2={exercises2} e3={exercises3}/>
       <Total amount={exercises1 + exercises2 + exercises3} />
     </div>
   )
