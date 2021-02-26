@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-//Header huolehtii kurssin nimen renderöimisestä
+//renders header
 const Header = (props) => {
   return (
     <div>
@@ -12,21 +12,18 @@ const Header = (props) => {
   )
 }
 
-/* const Part = (props) => {
-  const values = props.object
-  const courses = values.map(value =>
-    '<p>' + value + '</p>'
-    )
+// renders course's parts and excersise quantity
+const Part = (props) => {
   return (
-
+    <p>{props.part} {props.ex}</p>
   )
-} */
+} 
 
-
+// calls "Part" function
 const Content = (props) => {
   return (
     <div>
-      <p> {props.p} {props.ex}</p>
+      <Part part={props.p} ex={props.ex}/>
     </div>
 
   )
