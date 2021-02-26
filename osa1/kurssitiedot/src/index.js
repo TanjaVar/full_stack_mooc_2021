@@ -1,25 +1,7 @@
-/* Refaktoroi sovelluksen koodi siten, että se 
-koostuu kolmesta uudesta komponentista: Header,
-Content ja Total. Kaikki data pidetään edelleen
-komponentissa App, joka välittää tarpeelliset 
-tiedot kullekin komponentille props:ien avulla.
-Header huolehtii kurssin nimen renderöimisestä,
-Content osista ja niiden tehtävämääristä ja Total 
-tehtävien yhteismäärästä.*/
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-//1.2 kurssitiedot, step2
-/*Refaktoroi vielä komponentti Content siten, että se ei itse renderöi 
-yhdenkään osan nimeä eikä sen tehtävälukumäärää vaan ainoastaan 
-kolme Part-nimistä komponenttia, joista kukin siis renderöi yhden 
-osan nimen ja tehtävämäärän.*/
-const Part = (props) => {
-  return (
-    <p>{props.part} {props.ex}</p>
-  )
-}
 
 //Header huolehtii kurssin nimen renderöimisestä
 const Header = (props) => {
@@ -30,13 +12,21 @@ const Header = (props) => {
   )
 }
 
-// renderöi osat ja tehtävämäärät
+/* const Part = (props) => {
+  const values = props.object
+  const courses = values.map(value =>
+    '<p>' + value + '</p>'
+    )
+  return (
+
+  )
+} */
+
+
 const Content = (props) => {
   return (
     <div>
-      <Part part={props.p1} ex={props.e1}/>
-      <Part part={props.p2} ex={props.e2}/>
-      <Part part={props.p3} ex={props.e3}/>
+      <p> {props.p} {props.ex}</p>
     </div>
 
   )
@@ -53,20 +43,31 @@ const Total = (props) => {
 }
 
 const App = () => {
-  // All data is stored in component 'App'
   const course = 'Half Stack application development'
-  const part1 = 'Fundalmentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+
+  const part1 = {
+    name: 'Fundalmentals of react',
+    exercises: 10
+  }
+
+  const part2 = {
+    name: 'Using props to pass data',
+    exercises: 7
+  }
+
+  const part3 = {
+    name: 'State of a component',
+    exercises: 14
+  }
+
 
   return (
     <div>
       <Header courseName={course} />
-      <Content p1={part1} p2={part2} p3={part3} e1={exercises1} e2={exercises2} e3={exercises3}/>
-      <Total amount={exercises1 + exercises2 + exercises3} />
+      <Content p={part1.name} ex={part1.exercises} />
+      <Content p={part2.name} ex={part1.exercises} />
+      <Content p={part3.name} ex={part1.exercises} />
+      <Total amount={part1.exercises + part2.exercises + part3.exercises} />
     </div>
   )
 }
