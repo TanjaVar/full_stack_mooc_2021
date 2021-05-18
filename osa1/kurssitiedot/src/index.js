@@ -1,4 +1,7 @@
+import ReactDOM from 'react-dom'
+import App from './App.js'
 
+<<<<<<< HEAD
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -69,3 +72,9 @@ const App = () => {
 }
 
 ReactDOM.render(<App/>, document.getElementById('root'))
+=======
+ReactDOM.render(
+  <App />, 
+  document.getElementById('root')
+)
+>>>>>>> 43c3166707d34eb03373aae18acb3a7d0d70afd1
