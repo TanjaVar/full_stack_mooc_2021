@@ -12,6 +12,7 @@ const App = () => {
   const positivePressed = 0
 
 
+  
   const calcAverage = () => {
     return (
       (good+bad)/pressed
