@@ -22,6 +22,8 @@ const Part = (props) => {
   )
 } 
 
+
+
 // calls "Part" function
 const Content = (props) => {
   return (
