@@ -29,16 +29,24 @@ const CalculatePositive = (props) => {
 // 1.8 unicafe step 3
 // includes all functions which return statistics of the feedback application
 const Statistics = (props) => {
-  return (
-    <div>
-        <h1>statistics</h1>
-        good {props.good} <br />
-        neutral {props.neutral} <br />
-        bad {props.bad} <br />
-        <CalculateAverage pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral}/>
-        <CalculatePositive pressed={props.pressed} good={props.good} /> 
-    </div>
-  )
+  if (props.pressed > 0) {
+    return (
+      <div>
+          good {props.good} <br />
+          neutral {props.neutral} <br />
+          bad {props.bad} <br />
+          <CalculateAverage pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral}/>
+          <CalculatePositive pressed={props.pressed} good={props.good} />
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        feeback not given
+      </div>
+    )
+  }
+
 
 }
 
@@ -54,7 +62,9 @@ const App = () => {
         <Button handleClick={ () => { setGood(good+1); setPressed(pressed+1);}} text='good'/>
         <Button handleClick={ () => { setNeutral(neutral+1); setPressed(pressed+1);}} text='neutral'/>
         <Button handleClick={ () => { setBad(bad+1); setPressed(pressed+1);}}text='bad'/>
+        <h1>statistics</h1>
         <Statistics pressed={pressed} good={good} bad={bad} neutral={neutral}/>
+
     </div>
   )
 }
