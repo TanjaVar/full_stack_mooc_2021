@@ -26,7 +26,7 @@ const CalculatePositive = (props) => {
   )
 }
 
-//renders each statistic line separately
+//renders each statistic line separately...
 //unicafe 1.10 step 5
 const StatisticsLine = (props) => {
   if ({props.text} === 'good' || {props.text} === 'bad' || {props.text} === 'neutral') {
