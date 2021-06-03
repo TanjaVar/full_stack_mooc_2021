@@ -26,10 +26,9 @@ const CalculatePositive = (props) => {
   )
 }
 
-// 1.8 unicafe step 3
+// 1.8 unicafe step 3 test
 // includes all functions which return statistics of the feedback application
 const Statistics = (props) => {
-<<<<<<< HEAD
   if ({props.pressed} > 0) {
     return (
       <div>
@@ -47,9 +46,6 @@ const Statistics = (props) => {
       </div>
     )
   }
-
-
->>>>>>> cd831555332afc83b00b5a3f4b6ffee3d340e359
 }
 
 const App = () => {
