@@ -26,23 +26,59 @@ const CalculatePositive = (props) => {
   )
 }
 
+//renders each statistic line separately
+//unicafe 1.10 step 5
+const StatisticsLine = (props) => {
+  if ({props.text} === 'good' || {props.text} === 'bad' || {props.text} === 'neutral') {
+    return (
+      <div>
+        {props.text} {props.value}
+      </div>
+    )
+  } else if ({props.text} === 'average') {
+    return (
+      <div>
+        {props.text} {props.calc}
+      </div>
+    )
+  } else if ({props.text} === 'positive') {
+    return (
+      <div>
+        props.text} {props.calc}
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <p>Error</p>
+      </div>
+    )
+  }
+}
+
 // 1.8 unicafe step 3
 // includes all functions which return statistics of the feedback application
 const Statistics = (props) => {
   if (props.pressed > 0) {
     return (
       <div>
-          good {props.good} <br />
-          neutral {props.neutral} <br />
-          bad {props.bad} <br />
-          <CalculateAverage pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral}/>
-          <CalculatePositive pressed={props.pressed} good={props.good} />
+        <StatisticsLine text='good' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral} />
+        <StatisticsLine text='neutral' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral}/>
+        <StatisticsLine text='bad' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral} />
+        <StatisticsLine text='average' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral} calc={ () => {(props.good + props.bad)/props.pressed}}/>
+        <StatisticsLine text='positive' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral} calc= { () => {(props.good/props.pressed)*100}}/>
+
+        {/* good {props.good} <br />
+        neutral {props.neutral} <br />
+        bad {props.bad} <br />
+        <CalculateAverage pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral}/>
+        <CalculatePositive pressed={props.pressed} good={props.good} />  */}
       </div>
     )
   } else {
     return (
       <div>
-        feeback not given
+        feedback not given
       </div>
     )
   }
@@ -64,7 +100,6 @@ const App = () => {
         <Button handleClick={ () => { setBad(bad+1); setPressed(pressed+1);}}text='bad'/>
         <h1>statistics</h1>
         <Statistics pressed={pressed} good={good} bad={bad} neutral={neutral}/>
-
     </div>
   )
 }
