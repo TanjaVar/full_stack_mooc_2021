@@ -8,74 +8,68 @@ const Button = (props) => {
     )
 }
 
-const CalculateAverage = (props) => {
-  const average = (props.good + props.bad)/props.pressed
-  return (
-    <div>
-      Average {average}
-    </div>
-  )
-}
-
-const CalculatePositive = (props) => {
-  const positive = (props.good/props.pressed)*100
-  return (
-    <div>
-      Positive {positive} %
-    </div>
-  )
-}
 
 //renders each statistic line separately...
 //unicafe 1.10 step 5
 const StatisticsLine = (props) => {
-  if ({props.text} === 'good' || {props.text} === 'bad' || {props.text} === 'neutral') {
-    return (
-      <div>
-        {props.text} {props.value}
-      </div>
-    )
-  } else if ({props.text} === 'average') {
-    return (
-      <div>
-        {props.text} {props.calc}
-      </div>
-    )
-  } else if ({props.text} === 'positive') {
-    return (
-      <div>
-        props.text} {props.calc}
-      </div>
-    )
-  } else {
+    if (props.text === 'good') { 
+      //console.log('good', props.good)
+      return (
+        <div>
+          {props.text} {props.good}
+        </div>
+      )
+    } else if (props.text === 'bad') {
+      return (
+        <div>
+          {props.text} {props.bad}
+        </div>
+      )
+    } else if (props.text === 'neutral') {
+      return (
+        <div>
+        {props.text} {props.neutral}
+        </div>
+      )
+    }
+    //calculating average and positive value prosentage
+    if (props.text === 'average') {
+      const calc = (props.good + props.bad)/props.pressed
+      return (
+        <div>
+          {props.text} {calc}
+        </div>
+      )
+    } else if (props.text === 'positive') {
+      const positive = (props.good/props.pressed)*100
+      return (
+        <div>
+          {props.text} {positive}%
+        </div>
+      )
+    }
     return (
       <div>
         <p>Error</p>
       </div>
     )
   }
-}
 
 // 1.8 unicafe step 3
 // includes all functions which return statistics of the feedback application
 const Statistics = (props) => {
-  if (props.pressed > 0) {
-    return (
-      <div>
-        <StatisticsLine text='good' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral} />
-        <StatisticsLine text='neutral' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral}/>
-        <StatisticsLine text='bad' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral} />
-        <StatisticsLine text='average' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral} calc={ () => {(props.good + props.bad)/props.pressed}}/>
-        <StatisticsLine text='positive' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral} calc= { () => {(props.good/props.pressed)*100}}/>
-
-        {/* good {props.good} <br />
-        neutral {props.neutral} <br />
-        bad {props.bad} <br />
-        <CalculateAverage pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral}/>
-        <CalculatePositive pressed={props.pressed} good={props.good} />  */}
-      </div>
-    )
-  } else {
+    //console.log('working', props.pressed)
+    if (props.pressed > 0) {
+      return (
+        <div>
+          <StatisticsLine text='good' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral} />
+          <StatisticsLine text='neutral' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral}/>
+          <StatisticsLine text='bad' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral} />
+          <StatisticsLine text='average' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral}/>
+          <StatisticsLine text='positive' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral}/>
+        </div>
+      )
+    }
     return (
       <div>
         feedback not given
@@ -84,8 +78,7 @@ const Statistics = (props) => {
   }
 
 
-}
-
+//root component
 const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
