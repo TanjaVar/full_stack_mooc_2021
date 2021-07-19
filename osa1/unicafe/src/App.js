@@ -31,6 +31,12 @@ const StatisticsLine = ({ text, pressed, good, bad, neutral }) => {
         {text} {neutral}
         </div>
       )
+    } else if (text === "all") {
+      return (
+        <div>
+          {text} {pressed}
+        </div>
+      )
     }
     //calculating average and positive value percentage
     if (text === 'average') {
@@ -64,6 +70,7 @@ const Statistics = ({ pressed, good, bad, neutral }) => {
           <StatisticsLine text='good' pressed={pressed} good={good} bad={bad} neutral={neutral} />
           <StatisticsLine text='neutral' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
           <StatisticsLine text='bad' pressed={pressed} good={good} bad={bad} neutral={neutral} />
+          <StatisticsLine text='all' pressed={pressed} good={good} bad={bad} />
           <StatisticsLine text='average' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
           <StatisticsLine text='positive' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
         </div>
