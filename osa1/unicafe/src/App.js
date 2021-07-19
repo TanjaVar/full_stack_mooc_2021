@@ -11,40 +11,40 @@ const Button = (props) => {
 
 //renders each statistic line separately...
 //unicafe 1.10 step 5
-const StatisticsLine = (props) => {
-    if (props.text === 'good') { 
+const StatisticsLine = ({ text, pressed, good, bad, neutral }) => {
+    if (text === 'good') { 
       //console.log('good', props.good)
       return (
         <div>
-          {props.text} {props.good}
+          {text} {good}
         </div>
       )
-    } else if (props.text === 'bad') {
+    } else if (text === 'bad') {
       return (
         <div>
-          {props.text} {props.bad}
+          {text} {bad}
         </div>
       )
-    } else if (props.text === 'neutral') {
+    } else if (text === 'neutral') {
       return (
         <div>
-        {props.text} {props.neutral}
+        {text} {neutral}
         </div>
       )
     }
     //calculating average and positive value prosentage
-    if (props.text === 'average') {
-      const calc = (props.good + props.bad)/props.pressed
+    if (text === 'average') {
+      const calcAverage = (good + bad)/pressed
       return (
         <div>
-          {props.text} {calc}
+          {text} {calcAverage}
         </div>
       )
-    } else if (props.text === 'positive') {
-      const positive = (props.good/props.pressed)*100
+    } else if (text === 'positive') {
+      const positivePercentage = (good/pressed)*100
       return (
         <div>
-          {props.text} {positive}%
+          {text} {positivePercentage}%
         </div>
       )
     }
@@ -58,7 +58,6 @@ const StatisticsLine = (props) => {
 // 1.8 unicafe step 3
 // includes all functions which return statistics of the feedback application
 const Statistics = (props) => {
-    //console.log('working', props.pressed)
     if (props.pressed > 0) {
       return (
         <div>
