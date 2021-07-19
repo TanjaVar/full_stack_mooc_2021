@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 
-const Button = (props) => {
+const Button = ({ handleClick, text}) => {
   return (
       <>
-        <button onClick={props.handleClick}>{props.text}</button>
+        <button onClick={handleClick}>{text}</button>
       </>
     )
 }
@@ -32,7 +32,7 @@ const StatisticsLine = ({ text, pressed, good, bad, neutral }) => {
         </div>
       )
     }
-    //calculating average and positive value prosentage
+    //calculating average and positive value percentage
     if (text === 'average') {
       const calcAverage = (good + bad)/pressed
       return (
@@ -57,15 +57,15 @@ const StatisticsLine = ({ text, pressed, good, bad, neutral }) => {
 
 // 1.8 unicafe step 3
 // includes all functions which return statistics of the feedback application
-const Statistics = (props) => {
-    if (props.pressed > 0) {
+const Statistics = ({ pressed, good, bad, neutral }) => {
+    if (pressed > 0) {
       return (
         <div>
-          <StatisticsLine text='good' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral} />
-          <StatisticsLine text='neutral' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral}/>
-          <StatisticsLine text='bad' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral} />
-          <StatisticsLine text='average' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral}/>
-          <StatisticsLine text='positive' pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral}/>
+          <StatisticsLine text='good' pressed={pressed} good={good} bad={bad} neutral={neutral} />
+          <StatisticsLine text='neutral' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
+          <StatisticsLine text='bad' pressed={pressed} good={good} bad={bad} neutral={neutral} />
+          <StatisticsLine text='average' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
+          <StatisticsLine text='positive' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
         </div>
       )
     }
