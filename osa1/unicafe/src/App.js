@@ -58,20 +58,6 @@ const StatisticsLine = ({ text, pressed, good, bad, neutral }) => {
 
 // 1.8 unicafe step 3
 // includes all functions which return statistics of the feedback application
-<<<<<<< HEAD
-const Statistics = (props) => {
-  if (props.pressed > 0) {
-    return (
-      <div>
-        good {props.good} <br />
-        neutral {props.neutral} <br />
-        bad {props.bad} <br />
-        <CalculateAverage pressed={props.pressed} good={props.good} bad={props.bad} neutral={props.neutral}/>
-        <CalculatePositive pressed={props.pressed} good={props.good} /> 
-      </div>
-    )
-  } else {
-=======
 const Statistics = ({ pressed, good, bad, neutral }) => {
     if (pressed > 0) {
       return (
@@ -84,21 +70,16 @@ const Statistics = ({ pressed, good, bad, neutral }) => {
         </div>
       )
     }
->>>>>>> da555b59d5c4bc9ba2f52a4ac878ecdfa5822d99
+
     return (
       <div>
         feeback not given
       </div>
     )
   }
-<<<<<<< HEAD
-}
-
-=======
 
 
 //root component
->>>>>>> da555b59d5c4bc9ba2f52a4ac878ecdfa5822d99
 const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
