@@ -26,10 +26,40 @@ const CalculatePositive = (props) => {
   )
 }
 
-// 1.8 unicafe step 3 test
+//renders each statistic line separately...
+//unicafe 1.10 step 5
+const StatisticsLine = (props) => {
+  if (props.text === 'good' || props.text === 'bad' || props.text === 'neutral') {
+    return (
+      <div>
+        {props.text} {props.value}
+      </div>
+    )
+  } else if (props.text === 'average') {
+    return (
+      <div>
+        {props.text} {props.calc}
+      </div>
+    )
+  } else if (props.text === 'positive') {
+    return (
+      <div>
+        {props.text} {props.calc}
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <p>Error</p>
+      </div>
+    )
+  }
+}
+
+// 1.8 unicafe step 3
 // includes all functions which return statistics of the feedback application
 const Statistics = (props) => {
-  if ({props.pressed} > 0) {
+  if (props.pressed > 0) {
     return (
       <div>
         good {props.good} <br />
