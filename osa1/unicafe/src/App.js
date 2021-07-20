@@ -96,12 +96,6 @@ const Statistics = ({ pressed, good, bad, neutral }) => {
               </tr>
             </tbody>
           </table>
-          {/*}
-          <StatisticsLine text='good' pressed={pressed} good={good} bad={bad} neutral={neutral} />
-          <StatisticsLine text='neutral' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
-          <StatisticsLine text='bad' pressed={pressed} good={good} bad={bad} neutral={neutral} />
-          <StatisticsLine text='average' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
-      <StatisticsLine text='positive' pressed={pressed} good={good} bad={bad} neutral={neutral}/> */}
         </div>
       )
     }
