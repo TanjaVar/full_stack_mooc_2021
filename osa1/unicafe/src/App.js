@@ -15,44 +15,51 @@ const StatisticsLine = ({ text, pressed, good, bad, neutral }) => {
     if (text === 'good') { 
       //console.log('good', props.good)
       return (
-        <div>
-          {text} {good}
-        </div>
+        <>
+          <td>{text}</td>
+          <td>{good}</td>
+        </>
       )
     } else if (text === 'bad') {
       return (
-        <div>
-          {text} {bad}
-        </div>
+        <>
+          <td>{text}</td>
+          <td>{bad}</td>
+        </>
       )
     } else if (text === 'neutral') {
       return (
-        <div>
-        {text} {neutral}
-        </div>
+        <>
+          <td>{text}</td>
+          <td>{neutral}</td>
+        </>
       )
     }
     //calculating average and positive value percentage
     if (text === 'average') {
       const calcAverage = (good + bad)/pressed
       return (
-        <div>
-          {text} {calcAverage}
-        </div>
+        <>
+          <td>{text}</td>
+          <td>{calcAverage}</td>
+        </>
       )
     } else if (text === 'positive') {
       const positivePercentage = (good/pressed)*100
       return (
-        <div>
-          {text} {positivePercentage}%
-        </div>
+        <>
+          <td>{text}</td>
+          <td>{positivePercentage}%</td>
+        </>
       )
     }
 
     return (
-      <div>
-        <p>Error</p>
-      </div>
+      <>
+        <td>
+          <p>Error</p>
+        </td>
+      </>
     )
   }
 
@@ -62,11 +69,39 @@ const Statistics = ({ pressed, good, bad, neutral }) => {
     if (pressed > 0) {
       return (
         <div>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <table>
+                    <tbody>
+                        <tr>
+                          <StatisticsLine text='good' pressed={pressed} good={good} bad={bad} neutral={neutral} />
+                        </tr>
+                        <tr>
+                          <StatisticsLine text='neutral' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
+                        </tr>
+                        <tr>
+                          <StatisticsLine text='bad' pressed={pressed} good={good} bad={bad} neutral={neutral} />
+                        </tr>
+                        <tr>
+                          <StatisticsLine text='average' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
+                        </tr>
+                        <tr>
+                          <StatisticsLine text='positive' pressed={pressed} good={good} bad={bad} neutral={neutral}/> 
+                        </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          {/*}
           <StatisticsLine text='good' pressed={pressed} good={good} bad={bad} neutral={neutral} />
           <StatisticsLine text='neutral' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
           <StatisticsLine text='bad' pressed={pressed} good={good} bad={bad} neutral={neutral} />
           <StatisticsLine text='average' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
-          <StatisticsLine text='positive' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
+      <StatisticsLine text='positive' pressed={pressed} good={good} bad={bad} neutral={neutral}/> */}
         </div>
       )
     }
