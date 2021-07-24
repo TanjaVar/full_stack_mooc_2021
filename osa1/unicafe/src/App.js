@@ -15,21 +15,24 @@ const StatisticsLine = ({ text, pressed, good, bad, neutral }) => {
     if (text === 'good') { 
       //console.log('good', props.good)
       return (
-        <div>
-          {text} {good}
-        </div>
+        <>
+          <td>{text}</td>
+          <td>{good}</td>
+        </>
       )
     } else if (text === 'bad') {
       return (
-        <div>
-          {text} {bad}
-        </div>
+        <>
+          <td>{text}</td>
+          <td>{bad}</td>
+        </>
       )
     } else if (text === 'neutral') {
       return (
-        <div>
-        {text} {neutral}
-        </div>
+        <>
+          <td>{text}</td>
+          <td>{neutral}</td>
+        </>
       )
     } else if (text === "all") {
       return (
@@ -42,22 +45,27 @@ const StatisticsLine = ({ text, pressed, good, bad, neutral }) => {
     if (text === 'average') {
       const calcAverage = (good + bad)/pressed
       return (
-        <div>
-          {text} {calcAverage}
-        </div>
+        <>
+          <td>{text}</td>
+          <td>{calcAverage}</td>
+        </>
       )
     } else if (text === 'positive') {
       const positivePercentage = (good/pressed)*100
       return (
-        <div>
-          {text} {positivePercentage}%
-        </div>
+        <>
+          <td>{text}</td>
+          <td>{positivePercentage}%</td>
+        </>
       )
     }
+
     return (
-      <div>
-        <p>Error</p>
-      </div>
+      <>
+        <td>
+          <p>Error</p>
+        </td>
+      </>
     )
   }
 
@@ -67,18 +75,49 @@ const Statistics = ({ pressed, good, bad, neutral }) => {
     if (pressed > 0) {
       return (
         <div>
+<<<<<<< HEAD
           <StatisticsLine text='good' pressed={pressed} good={good} bad={bad} neutral={neutral} />
           <StatisticsLine text='neutral' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
           <StatisticsLine text='bad' pressed={pressed} good={good} bad={bad} neutral={neutral} />
           <StatisticsLine text='all' pressed={pressed} good={good} bad={bad} />
           <StatisticsLine text='average' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
           <StatisticsLine text='positive' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
+=======
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <table>
+                    <tbody>
+                        <tr>
+                          <StatisticsLine text='good' pressed={pressed} good={good} bad={bad} neutral={neutral} />
+                        </tr>
+                        <tr>
+                          <StatisticsLine text='neutral' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
+                        </tr>
+                        <tr>
+                          <StatisticsLine text='bad' pressed={pressed} good={good} bad={bad} neutral={neutral} />
+                        </tr>
+                        <tr>
+                          <StatisticsLine text='average' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
+                        </tr>
+                        <tr>
+                          <StatisticsLine text='positive' pressed={pressed} good={good} bad={bad} neutral={neutral}/> 
+                        </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+>>>>>>> 4437d2ddb8b31146542e874abfda7023601ae4d7
         </div>
       )
     }
+
     return (
       <div>
-        feedback not given
+        feeback not given
       </div>
     )
   }
@@ -99,6 +138,7 @@ const App = () => {
         <Button handleClick={ () => { setBad(bad+1); setPressed(pressed+1);}}text='bad'/>
         <h1>statistics</h1>
         <Statistics pressed={pressed} good={good} bad={bad} neutral={neutral}/>
+
     </div>
   )
 }
