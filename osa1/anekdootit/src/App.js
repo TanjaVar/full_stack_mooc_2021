@@ -14,42 +14,31 @@ const App = () => {
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when dianosing patients.'
   ]
 
-  const [selected, setSelected] = useState(0)
-  const [votes, setVotes] = useState(new Array(7).fill(0))
-  const [anecdoteWithMostVotes, setAnecdoteWithMostVotes] = useState('')
-  const [mostVotesAnecdoteNum, setMostVotesAnecdoteNum] = useState(0)
-  //const votes = [0,0,0,0,0,0,0]
-  //const [votesForAnecdotes, setVotes] = useState()
+  const [selected, setSelected] = useState(0) //which cell is selected?
+  const [votes, setVotes] = useState(new Array(7).fill(0)) //votes for each anecdote, default value 0
+  const [anecdoteWithMostVotes, setAnecdoteWithMostVotes] = useState('') //Which anecdote has most votes?
+  const [anecdoteWithMostVotesNum, setAnecdoteWithMostVotesNum] = useState(0) //current "most voted" anecdote's votes
 
   //calculates random number between 0 and 6 (array cells)
   //updates state
   const clickHandler = () => {
-    const randomNum = Math.floor(Math.random()*(anecdotes.length-0)+0)
-    setSelected(randomNum)
+    setSelected(Math.floor(Math.random()*(anecdotes.length-0)+0))
   }
 
-  //adds one note for current anecdote
+
+  //updates votenum for current anecdote
   //updates state with copy of 'votes' array
   const addVoteforAnecdote = () => {
     const copyOfVotes = {...votes} //make copy of existing 'votes' array
     copyOfVotes[selected] += 1 //add +1 vote for current anecdote
-    setVotes(copyOfVotes) //updates state with new votes array
-    console.log(votes) //testingtesting
-    let mostVotes = 0 //initilalize new helping variable (int)
-    for (var i = 0; i < copyOfVotes.length; i++) { //loop through array
-      if (copyOfVotes[i] > mostVotesAnecdoteNum) { //if array's current value is greater than mostVotesAnecdoteNum, then update it
-        mostVotes = copyOfVotes[i]//set new highest votevalue to mostVotes
-        setAnecdoteWithMostVotes(anecdotes[i])
-        setMostVotesAnecdoteNum(mostVotes)
-        console.log('sgsdgsdg')
+    setVotes(copyOfVotes) //updates state with updated votes array
+    for (let i = 0; i <= 7; i++) {
+      if (copyOfVotes[i] > anecdoteWithMostVotesNum) { //if array's current value is greater than mostVotesAnecdoteNum, then update it
+        let mostVotes = copyOfVotes[i] //set new highest votevalue to mostVotes
+        setAnecdoteWithMostVotes(anecdotes[i]) //set new anecdote to anecdoteWithMostVotes
+        setAnecdoteWithMostVotesNum(mostVotes) //set votevalue to anecdoteWithMostVotesNum
       }
     }
-    return (
-      <div>
-        {anecdoteWithMostVotes}
-        {mostVotesAnecdoteNum}
-      </div>
-    )
   }
 
 
@@ -61,6 +50,8 @@ const App = () => {
       <button onClick={clickHandler}>next anecdote</button>
       <button onClick={addVoteforAnecdote}>vote</button><br/><br/>
       <h1>Anecdotes with most votes</h1>
+      {anecdoteWithMostVotes}<br />
+      {anecdoteWithMostVotesNum}
     </div>
   )
 }
