@@ -17,7 +17,7 @@ const App = () => {
   const [selected, setSelected] = useState(0) //which cell is selected?
   const [votes, setVotes] = useState(new Array(7).fill(0)) //votes for each anecdote, default value 0
   const [anecdoteWithMostVotes, setAnecdoteWithMostVotes] = useState('') //Which anecdote has most votes?
-  const [anecdoteWithMostVotesNum, setAnecdoteWithMostVotesNum] = useState(0) //current "most voted" anecdote's votes
+  const [anecdoteWithMostVotesNum, setAnecdoteWithMostVotesNum] = useState(null) //current "most voted" anecdote's votes
 
   //calculates random number between 0 and 6 (array cells)
   //updates state

@@ -75,14 +75,6 @@ const Statistics = ({ pressed, good, bad, neutral }) => {
     if (pressed > 0) {
       return (
         <div>
-<<<<<<< HEAD
-          <StatisticsLine text='good' pressed={pressed} good={good} bad={bad} neutral={neutral} />
-          <StatisticsLine text='neutral' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
-          <StatisticsLine text='bad' pressed={pressed} good={good} bad={bad} neutral={neutral} />
-          <StatisticsLine text='all' pressed={pressed} good={good} bad={bad} />
-          <StatisticsLine text='average' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
-          <StatisticsLine text='positive' pressed={pressed} good={good} bad={bad} neutral={neutral}/>
-=======
           <table>
             <tbody>
               <tr>
@@ -110,7 +102,6 @@ const Statistics = ({ pressed, good, bad, neutral }) => {
               </tr>
             </tbody>
           </table>
->>>>>>> 4437d2ddb8b31146542e874abfda7023601ae4d7
         </div>
       )
     }
