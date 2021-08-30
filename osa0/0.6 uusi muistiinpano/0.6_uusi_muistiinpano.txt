@@ -1,4 +1,4 @@
-title 0.5 Single Page App sekvenssikaavio
+title 0.6 Single Page App sekvenssikaavio
 note left of selain: käyttäjä lisää listaan asian
 selain->serveri: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa,
 note right of serveri: serveri ottaa vastaan json muotoisen datan jonka suorittaa javascript
