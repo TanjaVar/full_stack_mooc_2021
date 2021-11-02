@@ -33,14 +33,13 @@ const Part = ({name, exercises }) => {
 //sum of all exercises 
 const Sum = (props) => {
 	return (
-		<p> Total of {props.totalExercises.reduce(function(sum, ex) {
-			console.log("Weeee", sum, ex)
+		<p> 
+			Total of {props.totalExercises.reduce(function(sum, ex) {
 			return sum + ex.exercises
-		}, 0)} exercises </p>
+			}, 0)} exercises 
+		</p>
 	)
 }
-
-
 
 //komponentti Course sisältää edellisessä osassa määritellyt komponentit, joiden vastuulle tulee kurssin nimen ja osien renderöinti.
 const Course = ({ course }) => {
@@ -48,9 +47,9 @@ const Course = ({ course }) => {
 
     return (
         <>
-            <Header courseHeader={course.name}/>
-            <Content courseContent={course.parts}/>
-						<Sum totalExercises={course.parts}/>
+					<Header courseHeader={course.name}/>
+					<Content courseContent={course.parts}/>
+					<Sum totalExercises={course.parts}/>
         </>
     )
 }
