@@ -5,24 +5,31 @@ import React, {useState} from 'react';
 const ListGenerator = (props) => {
   //console.log(props, 'listgenerator')
   return (
-    <li>{props.person.name}</li>
+    <li>{props.person.name} {props.person.phonenum}</li>
   )
 }
 
 const App = () => {
   const [persons, setPersons] = useState([
-    {name: 'Tanja Varvio'},
-    {name: 'tatti'}
+    {
+      name: 'Tanja Varvio',
+      phonenum: '056 943 94343'
+    },
+    {
+      name: 'tatti',
+      phonenum: '456 0323 9323'
+    }
   ]);
   const [newName, setName] = useState('type name here');
+  const [newPhonenumber, setNewPhonenumber] = useState('type number here');
 
   //kutsutaan kun buttonia painetaan
   const addName = (event) => {
     event.preventDefault(); // estää oletustoiminnan onClick event
     const personObject = {
-      name: newName
+      name: newName,
+      phonenum: newPhonenumber
     };
-
     //looppaa arrayn läpi ja jos löytää nimen sieltä niin sitten alert
     // muuttaa 
     let nameFound = false;
@@ -35,11 +42,9 @@ const App = () => {
         nameFound = true
       } 
     }
-
     if(!nameFound) {
       setPersons(persons.concat(personObject))
     }
-
     // nollaa newName State
     setName('')
   }
@@ -50,20 +55,33 @@ const App = () => {
     setName(event.target.value)
   }
 
+  // updating setPhonenumber every time new char is typed to the input
+  const handlePhonenumberChange = (event) => {
+    console.log(event.target.value)
+    setNewPhonenumber(event.target.value)
+  }
+
 
   return (
     <div>
       <h1>PHONEBOOK</h1>
       <form onSubmit={addName}>
         <div>
-          name: 
+          name:  
           <input 
             value={newName} 
             onChange={handleTextChange}
           />
+          <div>
+            phonenumber: 
+            <input 
+              value={newPhonenumber} 
+              onChange={handlePhonenumberChange}
+          />
+          </div>
         </div>
         <div>
-          <button type="submit">add name</button>
+          <button type="submit">Add contact</button>
         </div>
       </form>
       <h2>Numbers/Names</h2>
@@ -77,3 +95,5 @@ const App = () => {
 };
 
 export default App;
+
+// puh nro ei päivity newPhonenum muuttujaan oncahnge metodilla inputissa, miksei?
