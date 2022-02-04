@@ -2,30 +2,34 @@ import React, {useState} from 'react';
 
 // checks if persons array has same name as the user typed to the filter input
 const ListGenerator = (props) => {
-  //console.log('ListGenerator: tuleeko filtteri sana tänne nyt? true!', props.filterWith);
-  //console.log('ListGenerator: tuleeko false',props.loytyy)
   return (
     <li>{props.person.name} {props.person.phonenum} </li>
-  )
-
-  // //if true -> returns name and phonenum, if false => returns null
-  // if (props.person.name.toLowerCase() === props.filterWith.toLowerCase()) {
-  //   return (
-  //     <RowGenerator name={props.person.name} phonenum={props.person.phonenum}/>
-  //   )
-  //   }else {
-  //     return (
-  //       null
-  //     )
-  //   }
+  )  
 }
 
-// // returns name and phonenum in <li> element
-// const RowGenerator = (props) => {
-//   return (
-//     <li>{props.name} {props.phonenum}</li>
-//   )
+
+// filter fuctionality, given parematers: filterWith and onChange
+const Filter = (props) => {
+
+  const handleFilterChange = (event) => {
+    props.onChange(event.target.value)
+  }
+  
+  return (
+    <>
+      filter shown with:
+      <input 
+        value={props.filterWith}
+        onChange={handleFilterChange}
+      />
+    </>
+  )
+}
+
+// const Form = (props) => {
+
 // }
+
 
 const App = () => {
 
@@ -87,81 +91,27 @@ const App = () => {
     setNewPhonenumber('')
   }
 
-
-  //kutsutaan kun teksti name kentäsä vaihtuu
+  //eventhandler: kutsutaan kun teksti name kentäsä vaihtuu
   const handleTextChange = (event) => {
     console.log('handleTextChange: ', event.target.value)
     setNewName(event.target.value)
   }
 
-
-
-  // updating setPhonenumber every time new char is typed to the input
+  // eventhandler: updating setPhonenumber every time new char is typed to the input
   const handlePhonenumberChange = (event) => {
     console.log('handlePhonenumberChange: ', event.target.value)
     setNewPhonenumber(event.target.value)
   }
 
-
- 
-  // // updating filterWith every time new char is typed to the filter input
-  // const handleFilterWith = (event) => {
-  //   console.log('handleFilterwith: ', event.target.value);
-  //   //jos phonebookista löytyy annettu nimi, niin loytyy state muuttuu true si, muutoin false
-  //   //joka kerta jokaisen kirjoitetun hakusanan jälkeen appi katsoo onko phonebookissa jo sama
-  //   // for (let i = 0; i < persons.length; i++){
-  //   //   if (persons[i].name.toLowerCase()===event.target.value.toLowerCase()) {
-  //   //     setLoytyy(true)
-  //   //   }
-  //   // }
-
-  //   // //toimii kuten pitää
-  //   // console.log('handleFilterWith: jos kirjoitat tatti niin tuleeko true', loytyy, event.target.value.toLowerCase())
-
-  //   // //if name is in array then set the name in filtteroity
-  //   // if (setLoytyy===true) {
-  //   //   setFiltteroity(persons.filter(person => person.name.toLowerCase()===event.target.value.toLowerCase()))
-  //   // }
-
-  //   // //if name isn't in array then set persons array content to filtteroity state
-  //   // if (setLoytyy===false) {
-  //   //   setFiltteroity(persons)
-  //   // }
-
-  //   // console.log('handlefilterWith: tuleeko paivitetty lista yhdestä henkilöstä joka kirjoitettiin filtteriin? ', filtteroity)
-
-  //   // // looppaa persons listan läpi ja jos listasta löytyy sama nimi minkä käytätjä on antanut niin filtteröi kyseisen objektin setFiltteröity taulukkoon.
-  //   // persons.map(person => {
-  //   //   if(person.name === event.target.value) {
-  //   //     return (
-  //   //       setFiltteroity(persons.filter(person => person.name===event.target.value))
-  //   //     )
-  //   //   }else {
-  //   //     return (
-  //   //     setFiltteroity(persons)
-  //   //     )
-  //   // }})
-
-  //   //sets state
-  //   setFilterWith(event.target.value);
-  //   console.log('handlFilterWith ', filterWith)
-  // }
-
-
+  // eventHandler: updating filterwith state
+  const handleFilterChange = (newValue) => {
+    setFilterWith(newValue)
+  } 
 
 
   return (
     <div>
-      filter shown with:
-      <input 
-        type="text" 
-        placeholder="search..." 
-        onChange={(event) => { 
-          console.log('tuleeko tahan annettu filtterisana? tuleeko string? Funktio sanoo:', event.target.value,  typeof event.target.value)
-          return (
-            setFilterWith(event.target.value)
-          )}}
-      />
+      <Filter filterWith={filterWith} onChange={handleFilterChange}/>
       <h1>PHONEBOOK</h1>
       <form onSubmit={addName}>
         <div>
