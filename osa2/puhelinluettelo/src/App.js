@@ -1,46 +1,46 @@
 import React, {useState} from 'react';
 
 // checks if persons array has same name as the user typed to the filter input
-const ListGenerator = (props) => {
+const ListGenerator = ({person}) => {
   return (
-    <li>{props.person.name} {props.person.phonenum} </li>
+    <li>{person.name} {person.phonenum} </li>
   )  
 }
 
 
 // filter fuctionality, given parematers: filterWith and onChange
-const Filter = (props) => {
+const Filter = ({filterWith, onChange}) => {
 
   const handleFilterChange = (event) => {
-    props.onChange(event.target.value)
+    onChange(event.target.value)
   }
   
   return (
     <>
       filter shown with:
       <input 
-        value={props.filterWith}
+        value={filterWith}
         onChange={handleFilterChange}
       />
     </>
   )
 }
 
-const Form = (props) => {
+const Form = ({addName, newName, handleTextChange, newPhonenumber, handlePhonenumberChange}) => {
 
   return (
-    <form onSubmit={props.addName}>
+    <form onSubmit={addName}>
     <div>
       name:  
       <input 
-        value={props.newName} 
-        onChange={props.handleTextChange}
+        value={newName} 
+        onChange={handleTextChange}
       />
       <div>
         phonenumber: 
         <input 
-          value={props.newPhonenumber} 
-          onChange={props.handlePhonenumberChange}
+          value={newPhonenumber} 
+          onChange={handlePhonenumberChange}
       />
       </div>
     </div>
@@ -53,7 +53,6 @@ const Form = (props) => {
 
 
 const App = () => {
-
   //states
   const [filterWith, setFilterWith] = useState('')
   const [persons, setPersons] = useState([
@@ -107,7 +106,7 @@ const App = () => {
     setNewPhonenumber('')
   }
 
-  //eventhandler: kutsutaan kun teksti name kentäsä vaihtuu
+  //eventHandler: called when text in "name" field is changed
   const handleTextChange = (event) => {
     console.log('handleTextChange: ', event.target.value)
     setNewName(event.target.value)
@@ -119,7 +118,7 @@ const App = () => {
     setNewPhonenumber(event.target.value)
   }
 
-  // eventHandler: updating filterwith state
+  // eventHandler: updating filterWith state
   const handleFilterChange = (newValue) => {
     setFilterWith(newValue)
   } 
@@ -130,7 +129,7 @@ const App = () => {
       <Filter filterWith={filterWith} onChange={handleFilterChange}/>
       <h1>PHONEBOOK</h1>
       <Form addName={addName} newName={newName} handleTextChange={handleTextChange} newPhonenumber={newPhonenumber} handlePhonenumberChange={handlePhonenumberChange}/>
-      <h2>NAMES - NUMBERS</h2>
+      <h2>NAME - NUMBER</h2>
       <ul>
         {persons.filter((person) => {
           console.log('persons filtering: ', person, person.name, filterWith)
