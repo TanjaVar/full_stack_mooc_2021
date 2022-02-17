@@ -26,9 +26,30 @@ const Filter = (props) => {
   )
 }
 
-// const Form = (props) => {
+const Form = (props) => {
 
-// }
+  return (
+    <form onSubmit={props.addName}>
+    <div>
+      name:  
+      <input 
+        value={props.newName} 
+        onChange={props.handleTextChange}
+      />
+      <div>
+        phonenumber: 
+        <input 
+          value={props.newPhonenumber} 
+          onChange={props.handlePhonenumberChange}
+      />
+      </div>
+    </div>
+    <div>
+      <button type="submit">Add contact</button>
+    </div>
+  </form>
+  )
+}
 
 
 const App = () => {
@@ -59,10 +80,6 @@ const App = () => {
   ]);
   const [newName, setNewName] = useState('');
   const [newPhonenumber, setNewPhonenumber] = useState('');
-  //const [loytyy, setLoytyy] = useState(false);
-  //const [filtteroity, setFiltteroity] = useState(persons) //by default has persons array
-
-
 
   // function is called when 'submit' button is pressed on UI
   const addName = (event) => {
@@ -84,7 +101,6 @@ const App = () => {
     if(!nameFound) {
       setPersons(persons.concat(personObject))
     }
-    
 
     // sets statevalues empty after new object has been added
     setNewName('')
@@ -113,27 +129,9 @@ const App = () => {
     <div>
       <Filter filterWith={filterWith} onChange={handleFilterChange}/>
       <h1>PHONEBOOK</h1>
-      <form onSubmit={addName}>
-        <div>
-          name:  
-          <input 
-            value={newName} 
-            onChange={handleTextChange}
-          />
-          <div>
-            phonenumber: 
-            <input 
-              value={newPhonenumber} 
-              onChange={handlePhonenumberChange}
-          />
-          </div>
-        </div>
-        <div>
-          <button type="submit">Add contact</button>
-        </div>
-      </form>
+      <Form addName={addName} newName={newName} handleTextChange={handleTextChange} newPhonenumber={newPhonenumber} handlePhonenumberChange={handlePhonenumberChange}/>
       <h2>NAMES - NUMBERS</h2>
-      <ul> 
+      <ul>
         {persons.filter((person) => {
           console.log('persons filtering: ', person, person.name, filterWith)
           if (filterWith==="") {
