@@ -52,7 +52,6 @@ const App = () => {
   return (
     <div>
       {courses.map( course => {
-        console.log("fsfsdf", course);
         return <Course course={course} key={course.id}/>
       })}
     </div>
