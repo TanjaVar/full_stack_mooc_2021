@@ -1,56 +1,7 @@
 import React, {useState} from 'react';
-
-// checks if persons array has same name as the user typed to the filter input
-const ListGenerator = ({person}) => {
-  return (
-    <li>{person.name} {person.phonenum} </li>
-  )  
-}
-
-
-// filter fuctionality, given parematers: filterWith and onChange
-const Filter = ({filterWith, onChange}) => {
-
-  const handleFilterChange = (event) => {
-    onChange(event.target.value)
-  }
-  
-  return (
-    <>
-      filter shown with:
-      <input 
-        value={filterWith}
-        onChange={handleFilterChange}
-      />
-    </>
-  )
-}
-
-const Form = ({addName, newName, handleTextChange, newPhonenumber, handlePhonenumberChange}) => {
-
-  return (
-    <form onSubmit={addName}>
-    <div>
-      name:  
-      <input 
-        value={newName} 
-        onChange={handleTextChange}
-      />
-      <div>
-        phonenumber: 
-        <input 
-          value={newPhonenumber} 
-          onChange={handlePhonenumberChange}
-      />
-      </div>
-    </div>
-    <div>
-      <button type="submit">Add contact</button>
-    </div>
-  </form>
-  )
-}
-
+import ListGenerator from './components/ListGenerator';
+import Filter from './components/Filter';
+import Form from './components/Form';
 
 const App = () => {
   //states
@@ -128,6 +79,7 @@ const App = () => {
     <div>
       <Filter filterWith={filterWith} onChange={handleFilterChange}/>
       <h1>PHONEBOOK</h1>
+      <h3>Add a name</h3>
       <Form addName={addName} newName={newName} handleTextChange={handleTextChange} newPhonenumber={newPhonenumber} handlePhonenumberChange={handlePhonenumberChange}/>
       <h2>NAME - NUMBER</h2>
       <ul>
