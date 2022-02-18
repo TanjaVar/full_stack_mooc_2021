@@ -10,7 +10,6 @@ const Header = (props) => {
 
 
 const Content = (props) => {
-    console.log("Content props:",props)
     return (
         <>  
             {props.courseContent.map(part => 
@@ -21,8 +20,6 @@ const Content = (props) => {
 };
 
 const Part = ({name, exercises }) => {
-    console.log("PART:",  name)
-    console.log("EERCISES:", exercises)
     return (
         <>
             <p> {name} {exercises}</p>
@@ -41,10 +38,8 @@ const Sum = (props) => {
 	)
 }
 
-//komponentti Course sisältää edellisessä osassa määritellyt komponentit, joiden vastuulle tulee kurssin nimen ja osien renderöinti.
+//Component Course contains components from previous exercise, which are responsible of course name and parts rendering
 const Course = ({ course }) => {
-    console.log("WOLOLO", course) // undefined
-
     return (
         <>
 					<Header courseHeader={course.name}/>
