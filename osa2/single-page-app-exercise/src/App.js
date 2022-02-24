@@ -19,8 +19,9 @@ const App = (props) => {
     })
   }, [])
   console.log('render', notes.length, 'notes')
-
   
+
+
 const addNote = (event) => {
     event.preventDefault(); // prevent default behavior
     console.log('button clicked', event.target); //console logs event = form element

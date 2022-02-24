@@ -1,35 +1,51 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ListGenerator from './components/ListGenerator';
 import Filter from './components/Filter';
 import Form from './components/Form';
+import axios from 'axios';
 
 const App = () => {
   //states
   const [filterWith, setFilterWith] = useState('')
-  const [persons, setPersons] = useState([
-    {
-      name: 'Tanja',
-      phonenum: '056 943 94343'
-    },
-    {
-      name: 'tatti',
-      phonenum: '456 0323 9323'
-    },
-    {
-      name: 'Make',
-      phonenum: '04363465346346'
-    },
-    {
-      name: 'Taateli',
-      phonenum: '34653 363643'
-    },
-    {
-      name: 'Puuteli',
-      phonenum: '324 4235 52352'
-    }
-  ]);
   const [newName, setNewName] = useState('');
   const [newPhonenumber, setNewPhonenumber] = useState('');
+  const [persons, setPersons] = useState([])
+
+  //use effect function which gets data from database and loads axios method only first time when component loads
+  useEffect(() => {
+    console.log('effect')
+    axios
+    .get('http://localhost:3001/persons')
+    .then(response => {
+      console.log('promise fulfilled')
+      setPersons(response.data)
+    })
+  }, [])
+  console.log('render', persons.length, 'persons')
+
+  // OLD SOLUTION
+  // const [persons, setPersons] = useState([
+  //   {
+  //     name: 'Tanja',
+  //     phonenum: '056 943 94343'
+  //   },
+  //   {
+  //     name: 'tatti',
+  //     phonenum: '456 0323 9323'
+  //   },
+  //   {
+  //     name: 'Make',
+  //     phonenum: '04363465346346'
+  //   },
+  //   {
+  //     name: 'Taateli',
+  //     phonenum: '34653 363643'
+  //   },
+  //   {
+  //     name: 'Puuteli',
+  //     phonenum: '324 4235 52352'
+  //   }
+  // ]);
 
   // function is called when 'submit' button is pressed on UI
   const addName = (event) => {
