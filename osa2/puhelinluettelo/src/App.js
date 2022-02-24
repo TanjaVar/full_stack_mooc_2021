@@ -23,30 +23,6 @@ const App = () => {
   }, [])
   console.log('render', persons.length, 'persons')
 
-  // OLD SOLUTION
-  // const [persons, setPersons] = useState([
-  //   {
-  //     name: 'Tanja',
-  //     phonenum: '056 943 94343'
-  //   },
-  //   {
-  //     name: 'tatti',
-  //     phonenum: '456 0323 9323'
-  //   },
-  //   {
-  //     name: 'Make',
-  //     phonenum: '04363465346346'
-  //   },
-  //   {
-  //     name: 'Taateli',
-  //     phonenum: '34653 363643'
-  //   },
-  //   {
-  //     name: 'Puuteli',
-  //     phonenum: '324 4235 52352'
-  //   }
-  // ]);
-
   // function is called when 'submit' button is pressed on UI
   const addName = (event) => {
     event.preventDefault(); // prevent default onClick event
