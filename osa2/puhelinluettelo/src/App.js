@@ -4,6 +4,7 @@ import Filter from './components/Filter';
 import Form from './components/Form';
 import axios from 'axios';
 
+//Exercise 2.11 working properly
 const App = () => {
   //states
   const [filterWith, setFilterWith] = useState('')
