@@ -34,6 +34,12 @@ const addNote = (event) => {
       id: notes.length + 1 //generoidaan id muistiinpanojen määrn perusteella
     };
 
+    axios
+      .post('http://localhost:3001/notes', noteObject)
+      .then(response => {
+        console.log(response)
+      })
+
     // generoi uuden arrayn jossa on mukana nyt uusi alkio tietoineen ja sen jälkeen nollaa 
     // tekstikentän teksti
     setNotes(notes.concat(noteObject));
