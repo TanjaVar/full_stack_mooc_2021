@@ -38,12 +38,9 @@ const addNote = (event) => {
       .post('http://localhost:3001/notes', noteObject)
       .then(response => {
         console.log(response)
+        setNotes(notes.concat(response.data)); // creates new array from notes array and adds new data from "server"
+        setNewNote('') // sets newNote State empty
       })
-
-    // generoi uuden arrayn jossa on mukana nyt uusi alkio tietoineen ja sen jälkeen nollaa 
-    // tekstikentän teksti
-    setNotes(notes.concat(noteObject));
-    setNewNote('');
   }
 
   const handleNoteChange = (event) => {
@@ -58,6 +55,11 @@ const addNote = (event) => {
     ? notes
     : notes.filter(note => note.important === true);
 
+  //
+  const toggleImportanceOf = (id) => {
+    console.log(`importance of ${id} needs to be toggled`)
+  }
+
 
     //onClick tapahtumakäsittelijä asettaa showImportantin vastakkaiseksi arvoksi (boolean)
     // button elementtiin vaihtuu teksti riippuen mikä setImportant staten tila on
@@ -71,7 +73,11 @@ const addNote = (event) => {
         </div>
         <ul>
           {notesToShow.map(note => 
-            <Note key={note.id} note={note} />
+            <Note 
+              key={note.id} 
+              note={note} 
+              toggleImportance={() => toggleImportanceOf(note.id)}
+            />
           )}
         </ul>
         <form onSubmit={addNote}>
