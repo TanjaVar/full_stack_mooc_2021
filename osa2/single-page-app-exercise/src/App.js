@@ -57,7 +57,15 @@ const addNote = (event) => {
 
   //
   const toggleImportanceOf = (id) => {
-    console.log(`importance of ${id} needs to be toggled`)
+    //console.log(`importance of ${id} needs to be toggled`)
+    const url = `http://localhost:3001/notes/${id}`; //get notes own url
+    const note = notes.find(note => note.id === id) //find the right note with specific id
+    const changedNote = {...note, important: !note.important} // make copy of an array and replace with new information
+
+    axios.put(url, changedNote)
+      .then(response => {
+        setNotes(notes.map(note => note.id !== id ? note : response.data)) // aseta state ja mapilla muuta vain se olio jonka id on muutettu
+      })
   }
 
 
