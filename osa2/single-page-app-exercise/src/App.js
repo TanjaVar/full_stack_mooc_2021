@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
 import Note from './components/Note';
+import noteService from './services/notes'
 
 const App = (props) => {
   const [notes, setNotes] = useState([]);
@@ -8,17 +8,15 @@ const App = (props) => {
   const [showImportant, setShowImportant] = useState(true);
 
   // useFetch performs side affects in function components
-  // gets data from db.json and after 'get' gets status fulfilled then sets data to notes hook 
+  // gets data from db.json with notes.js service module file, after getting data updates state and site rerenders
   useEffect(() => {
-    console.log('effect')
-    axios
-    .get('http://localhost:3001/notes')
-    .then(response => {
-      console.log('promise fulfilled')
-      setNotes(response.data)
-    })
+    noteService
+      .getAll()
+      .then(response => {
+        setNotes(response.data)
+      })
   }, [])
-  console.log('render', notes.length, 'notes')
+  //console.log('render', notes.length, 'notes')
   
 
 
@@ -31,16 +29,14 @@ const addNote = (event) => {
       content: newNote,
       date: new Date().toISOString(),
       important: Math.random()>0.5, //50% todennäköisyydellä "tärkeä"
-      id: notes.length + 1 //generoidaan id muistiinpanojen määrn perusteella
     };
 
-    axios
-      .post('http://localhost:3001/notes', noteObject)
-      .then(response => {
-        console.log(response)
-        setNotes(notes.concat(response.data)); // creates new array from notes array and adds new data from "server"
-        setNewNote('') // sets newNote State empty
-      })
+    noteService
+    .create(noteObject)
+    .then(response => {
+      setNotes(notes.concat(response.data)) //response.data object contains content, date and imoportance
+      setNewNote('')
+    })
   }
 
   const handleNoteChange = (event) => {
@@ -55,16 +51,17 @@ const addNote = (event) => {
     ? notes
     : notes.filter(note => note.important === true);
 
-  //
+  //switch note importance 
   const toggleImportanceOf = (id) => {
     //console.log(`importance of ${id} needs to be toggled`)
     const url = `http://localhost:3001/notes/${id}`; //get notes own url
-    const note = notes.find(note => note.id === id) //find the right note with specific id
+    const note = notes.find(n => n.id === id) //find the right note with specific id
     const changedNote = {...note, important: !note.important} // make copy of an array and replace with new information
 
-    axios.put(url, changedNote)
+    noteService
+      .update(id, changedNote)
       .then(response => {
-        setNotes(notes.map(note => note.id !== id ? note : response.data)) // aseta state ja mapilla muuta vain se olio jonka id on muutettu
+        setNotes(notes.map(note => note.id !== id ? note : response.data))
       })
   }
 
