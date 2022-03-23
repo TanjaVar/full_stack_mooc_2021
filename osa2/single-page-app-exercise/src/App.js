@@ -4,7 +4,7 @@ import noteService from './services/notes'
 
 const App = (props) => {
   const [notes, setNotes] = useState([]);
-  const [newNote, setNewNote] = useState('new note...');
+  const [newNote, setNewNote] = useState('');
   const [showImportant, setShowImportant] = useState(true);
 
   // useFetch performs side affects in function components
@@ -29,24 +29,29 @@ const addNote = (event) => {
       content: newNote,
       date: new Date().toISOString(),
       important: Math.random()>0.5, //50% todennäköisyydellä "tärkeä"
+      id: notes.length + 1,
     };
 
     noteService
     .create(noteObject)
-    .then(response => {
-      setNotes(notes.concat(response.data)) //response.data object contains content, date and imoportance
+    .then(returnedNote => {
+      setNotes(notes.concat(returnedNote)) //response.data object contains content, date and imoportance
       setNewNote('')
+    })
+    .catch(error => {
+      alert(
+        `can't add new note`
+      )
     })
   }
 
   const handleNoteChange = (event) => {
     //syotekentan arvon muutoksella ei ole oletusarvoista toimintaa joten preventDefaultia ei tarvitse 
-    console.log(event.target.value); //event on tapahtumaolio
+    console.log('handleNoteChange: ', event.target.value); //event on tapahtumaolio
     setNewNote(event.target.value);
   }
 
   // ehdollinen operaattori katsoo onko showImportant true
-  // jos on niin sitten 
   const notesToShow = !showImportant
     ? notes
     : notes.filter(note => note.important === true);
@@ -54,14 +59,21 @@ const addNote = (event) => {
   //switch note importance 
   const toggleImportanceOf = (id) => {
     //console.log(`importance of ${id} needs to be toggled`)
-    const url = `http://localhost:3001/notes/${id}`; //get notes own url
+    const url = `http://localhost:3001/notes/${id}` //get notes own url
     const note = notes.find(n => n.id === id) //find the right note with specific id
     const changedNote = {...note, important: !note.important} // make copy of an array and replace with new information
 
+    // sets new note to notes State and if not succeed then error message will be displayed
     noteService
       .update(id, changedNote)
-      .then(response => {
-        setNotes(notes.map(note => note.id !== id ? note : response.data))
+      .then(returnedNote => {
+        setNotes(notes.map(note => note.id !== id ? note : returnedNote))
+      })
+      .catch(error => {
+        alert(
+          `failed to update importance of note id ${id}`
+        )
+        setNotes(notes.filter(n => n.id !== id))
       })
   }
 
