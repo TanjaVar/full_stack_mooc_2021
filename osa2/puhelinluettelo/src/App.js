@@ -70,8 +70,22 @@ const App = () => {
   // eventHandler: updating filterWith state
   const handleFilterChange = (newValue) => {
     setFilterWith(newValue)
-  } 
+  }
 
+  //deletes person from Phonebook. gets unique id and person name as parameters
+  const deletePerson = ( id ) => {
+    //const areYouSure = Window.confirm(`Are you sure you want to delete ${name} from phonebook?`)
+    console.log('deletePerson function: Im working!')
+    console.log(`deletePerson: ${id}`)
+
+    phonebookService
+    .deleteFromPhonebook(id)
+    .then(promise => {
+      console.log('deletePerson function: promise fulfilled yay')
+      setPersons(persons.map(person => person.id !== id ? person : promise.data))
+    })
+    .catch(error => alert('something wnt wfongg'))
+  }
 
   return (
     <div>
@@ -90,7 +104,7 @@ const App = () => {
           }
         }).map(person => {
           return (
-            <ListGenerator person={person} key={person.name} />
+            <ListGenerator person={person} key={person.name} deletePersonFromPhonebook={() => deletePerson(person.id, person.name)}/>
           )
         })}
       </ul>

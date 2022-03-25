@@ -9,8 +9,8 @@ const create = (newObject) => {
     return axios.post(phonebookBaseUrl, newObject)
 }
 
-const update = (id, newObject) => {
-    return axios.put(`${phonebookBaseUrl}/${id}`, newObject)
+const deleteFromPhonebook = (id) => {
+    return axios.delete(`${phonebookBaseUrl}/${id}`)
 }
 
-export default { getAll, create, update }
+export default { getAll, create, deleteFromPhonebook }
