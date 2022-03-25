@@ -73,18 +73,19 @@ const App = () => {
   }
 
   //deletes person from Phonebook. gets unique id and person name as parameters
-  const deletePerson = ( id ) => {
-    //const areYouSure = Window.confirm(`Are you sure you want to delete ${name} from phonebook?`)
+  const deletePerson = ( id, name ) => {
     console.log('deletePerson function: Im working!')
     console.log(`deletePerson: ${id}`)
 
-    phonebookService
-    .deleteFromPhonebook(id)
-    .then(promise => {
-      console.log('deletePerson function: promise fulfilled yay')
-      setPersons(persons.map(person => person.id !== id ? person : promise.data))
-    })
-    .catch(error => alert('something wnt wfongg'))
+    if (window.confirm(`Are you sure you want to delete person ${name} from phonebook?`)) {
+      phonebookService
+      .deleteFromPhonebook(id)
+      .then(promise => {
+        console.log('deletePerson function: promise fulfilled yay')
+        setPersons(persons.map(person => person.id !== id ? person : promise.data))
+      })
+      .catch(error => alert('something went wrong'))
+    }
   }
 
   return (
