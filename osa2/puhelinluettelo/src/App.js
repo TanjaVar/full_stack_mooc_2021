@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import ListGenerator from './components/ListGenerator';
 import Filter from './components/Filter';
 import Form from './components/Form';
-import axios from 'axios';
+//import noteService from './services/notes'
+import axios from 'axios'
 
 //Exercise 2.11 working properly
 const App = () => {
@@ -12,7 +13,7 @@ const App = () => {
   const [newPhonenumber, setNewPhonenumber] = useState('');
   const [persons, setPersons] = useState([])
 
-  //use effect function which gets data from database and loads axios method only first time when component loads
+  //use effect function which gets data from database and loads axios method only once when component loads
   useEffect(() => {
     console.log('effect')
     axios
@@ -42,7 +43,11 @@ const App = () => {
       } 
     }
     if(!nameFound) {
-      setPersons(persons.concat(personObject))
+      axios
+        .post('http://localhost:3001/persons', personObject)
+        .then(response => {
+          setPersons(persons.concat(personObject))
+        })
     }
 
     // sets statevalues empty after new object has been added
