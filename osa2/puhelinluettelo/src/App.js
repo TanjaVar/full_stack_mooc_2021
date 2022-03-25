@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ListGenerator from './components/ListGenerator';
 import Filter from './components/Filter';
 import Form from './components/Form';
-//import noteService from './services/notes'
-import axios from 'axios'
+import phonebookService from './services/phonebookPersons'
 
 //Exercise 2.11 working properly
 const App = () => {
@@ -16,10 +15,10 @@ const App = () => {
   //use effect function which gets data from database and loads axios method only once when component loads
   useEffect(() => {
     console.log('effect')
-    axios
-    .get('http://localhost:3001/persons')
+    phonebookService
+    .getAll()
     .then(response => {
-      console.log('promise fulfilled')
+      console.log('promise fulfilled! data fetched from database')
       setPersons(response.data)
     })
   }, [])
@@ -43,10 +42,11 @@ const App = () => {
       } 
     }
     if(!nameFound) {
-      axios
-        .post('http://localhost:3001/persons', personObject)
+      phonebookService
+        .create(personObject)
         .then(response => {
-          setPersons(persons.concat(personObject))
+          setPersons(persons.concat(response.data))
+          console.log(`addName function: new contact sended successfully`) //check from conosle that sent information is correct
         })
     }
 
