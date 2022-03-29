@@ -13,4 +13,8 @@ const deleteFromPhonebook = (id) => {
     return axios.delete(`${phonebookBaseUrl}/${id}`)
 }
 
-export default { getAll, create, deleteFromPhonebook }
+const updatePhoneNum = (id, newObject) => {
+    return axios.put(`${phonebookBaseUrl}/${id}`, newObject)
+}
+
+export default { getAll, create, deleteFromPhonebook, updatePhoneNum }

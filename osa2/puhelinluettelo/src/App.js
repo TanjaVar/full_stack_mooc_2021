@@ -37,7 +37,24 @@ const App = () => {
     let nameFound = false;
     for (let i = 0; i < persons.length; i++) {
       if (newName.toLowerCase() === persons[i].name.toLowerCase()) {
-        window.alert(`${persons[i].name} is already in PHONEBOOK`)
+        if (window.confirm(`${personObject.name} and his/her phonenumber is already in phonebook. Do you wish to overwrite old number with new one?`)) {
+          // find person who's phonenumber is going to be overwrited
+          const person = persons.find(person => person.id === personObject.name)
+          // copy const person,but change it with new phonenumber
+          //const changedPerson = {...person, phonenum: personObject.newPhonenumber}
+
+          // call phonebookservices updatePhoneNum function and update database
+          phonebookService
+          .updatePhoneNum(i+1, personObject)
+          .then( response => {
+            console.log(`AddName: ${personObject.name} new phonenum was successfully added to phonebook`)
+            setPersons(persons.map(person => person.name.toLowerCase() !== personObject.name.toLowerCase() ? person : response.data))
+          })
+          .catch(error => {
+            window.alert(`something went wrong while trying to update phonenumber`)
+          })
+        }
+        //window.alert(`${persons[i].name} is already in PHONEBOOK`)
         nameFound = true
       } 
     }
@@ -49,7 +66,6 @@ const App = () => {
           console.log(`addName function: new contact sended successfully`) //check from conosle that sent information is correct
         })
     }
-
     // sets statevalues empty after new object has been added
     setNewName('')
     setNewPhonenumber('')
@@ -75,7 +91,7 @@ const App = () => {
   //deletes person from Phonebook. gets unique id and person name as parameters
   const deletePerson = ( id, name ) => {
     console.log('deletePerson function: Im working!')
-    console.log(`deletePerson: ${id}`)
+    console.log(`deletePerson: ${id} ${name}`)
 
     if (window.confirm(`Are you sure you want to delete person ${name} from phonebook?`)) {
       phonebookService
