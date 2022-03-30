@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Note from './components/Note';
 import noteService from './services/notes'
+import Notifications from './components/Notifications'
 
 const App = (props) => {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState('');
   const [showImportant, setShowImportant] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('')
 
   // useFetch performs side affects in function components
   // gets data from db.json with notes.js service module file, after getting data updates state and site rerenders
@@ -16,9 +18,6 @@ const App = (props) => {
         setNotes(response.data)
       })
   }, [])
-  //console.log('render', notes.length, 'notes')
-  
-
 
 const addNote = (event) => {
     event.preventDefault(); // prevent default behavior
@@ -29,7 +28,7 @@ const addNote = (event) => {
       content: newNote,
       date: new Date().toISOString(),
       important: Math.random()>0.5, //50% todennäköisyydellä "tärkeä"
-      id: notes.length + 1,
+      //id: notes.length + 1,
     };
 
     noteService
@@ -58,21 +57,22 @@ const addNote = (event) => {
 
   //switch note importance 
   const toggleImportanceOf = (id) => {
-    //console.log(`importance of ${id} needs to be toggled`)
-    const url = `http://localhost:3001/notes/${id}` //get notes own url
     const note = notes.find(n => n.id === id) //find the right note with specific id
-    const changedNote = {...note, important: !note.important} // make copy of an array and replace with new information
+    const changedNote = {...note, important: !note.important} // make copy of an array and update important value (boolean)
 
-    // sets new note to notes State and if not succeed then error message will be displayed
+    // sets new note to notes State and if not succeed then error message will be displayed to ui
+    //uses update method from notes.js
     noteService
       .update(id, changedNote)
       .then(returnedNote => {
         setNotes(notes.map(note => note.id !== id ? note : returnedNote))
       })
       .catch(error => {
-        alert(
-          `failed to update importance of note id ${id}`
-        )
+        // display error message for 5 seconds if error occurs
+        setErrorMessage(`Note '${note.content}' was already removed from the server`)
+        setTimeout(() => {
+          setErrorMessage(null)
+        }, 5000)
         setNotes(notes.filter(n => n.id !== id))
       })
   }
@@ -83,9 +83,10 @@ const addNote = (event) => {
     return (
       <div>
         <h1>Notes</h1>
+        <Notifications message={errorMessage} />
         <div>
-          <button onClick={() => setShowImportant(!showImportant)}>
-            show {!showImportant ? 'important' : 'all'}
+          <button className='showAllButton' onClick={() => setShowImportant(!showImportant)}>
+            show {!showImportant ? 'important' : 'all'} notes
           </button>
         </div>
         <ul>
@@ -97,7 +98,7 @@ const addNote = (event) => {
             />
           )}
         </ul>
-        <form onSubmit={addNote}>
+        <form className='inputSaveNote' onSubmit={addNote}>
           <input 
             value={newNote} 
             onChange={handleNoteChange} 

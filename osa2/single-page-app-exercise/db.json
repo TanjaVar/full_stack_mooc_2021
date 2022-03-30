@@ -4,7 +4,7 @@
       "id": 1,
       "content": "HTML is easy",
       "date": "2022-1-17T17:30:31.098Z",
-      "important": true
+      "important": false
     },
     {
       "id": 2,
@@ -16,12 +16,12 @@
       "id": 3,
       "content": "GET and POST are the most important methods of HTTP protocol",
       "date": "2022-1-17T19:20:14.298Z",
-      "important": false
+      "important": true
     },
     {
       "content": "new note...gdrg",
       "date": "2022-03-21T13:16:39.484Z",
-      "important": false,
+      "important": true,
       "id": 4
     },
     {
@@ -51,7 +51,7 @@
     {
       "content": "mosidgsdg",
       "date": "2022-03-21T13:58:13.828Z",
-      "important": true,
+      "important": false,
       "id": 9
     },
     {
@@ -63,7 +63,7 @@
     {
       "content": "miii",
       "date": "2022-03-22T10:51:22.611Z",
-      "important": true,
+      "important": false,
       "id": 11
     },
     {
@@ -81,13 +81,13 @@
     {
       "content": "hei",
       "date": "2022-03-22T11:03:53.215Z",
-      "important": true,
+      "important": false,
       "id": 14
     },
     {
       "content": "vxdxdv",
       "date": "2022-03-23T10:59:32.825Z",
-      "important": true,
+      "important": false,
       "id": 15
     },
     {
@@ -95,6 +95,72 @@
       "date": "2022-03-23T10:59:36.654Z",
       "important": false,
       "id": 16
+    },
+    {
+      "content": "fdf",
+      "date": "2022-03-29T12:16:00.745Z",
+      "important": false,
+      "id": 17
+    },
+    {
+      "content": "tämä on tärkeä",
+      "date": "2022-03-30T10:28:28.353Z",
+      "important": false,
+      "id": 18
+    },
+    {
+      "content": "tämä on tärkeä",
+      "date": "2022-03-30T10:28:48.391Z",
+      "important": false,
+      "id": 19
+    },
+    {
+      "content": "ääää",
+      "date": "2022-03-30T10:29:10.871Z",
+      "important": false,
+      "id": 20
+    },
+    {
+      "content": "uuuu",
+      "date": "2022-03-30T10:29:26.263Z",
+      "important": false,
+      "id": 21
+    },
+    {
+      "content": "muuuu",
+      "date": "2022-03-30T10:30:19.743Z",
+      "important": false,
+      "id": 22
+    },
+    {
+      "content": "kukkuu",
+      "date": "2022-03-30T10:43:31.543Z",
+      "important": false,
+      "id": 23
+    },
+    {
+      "content": "kukkuu",
+      "date": "2022-03-30T10:43:40.286Z",
+      "important": false,
+      "id": 24
+    },
+    {
+      "content": "kiu",
+      "date": "2022-03-30T10:44:43.902Z",
+      "important": false,
+      "id": 25
+    },
+    {
+      "content": "kiu",
+      "date": "2022-03-30T10:45:08.958Z",
+      "important": false,
+      "id": 26
+    },
+    {
+      "content": "uusi note",
+      "date": "2022-03-30T10:56:32.869Z",
+      "important": false,
+      "id": 27
     }
   ]
 }
