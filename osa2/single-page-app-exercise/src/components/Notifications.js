@@ -1,7 +1,7 @@
 
 
 // Notification component which returns error message
-// if note content empty, then displays default error message from App.js state 'errorMessage' state
+// if note content is empty, then displays default error message from App.js state 'errorMessage' state
 const Notification = ({ message }) => {
     if (message === null) {
         return null
