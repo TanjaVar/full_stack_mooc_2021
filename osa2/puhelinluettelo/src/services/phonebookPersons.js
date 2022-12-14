@@ -1,5 +1,5 @@
 import axios from 'axios'
-const phonebookBaseUrl = 'http://localhost:3001/persons'
+const phonebookBaseUrl = 'http://localhost:3002/persons'
 
 const getAll = () => {
     return axios.get(phonebookBaseUrl)
