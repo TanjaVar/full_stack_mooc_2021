@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Note from './components/Note';
 import noteService from './services/notes'
 import Notifications from './components/Notifications'
+import Footer from './components/Footer'
 
 const App = (props) => {
   const [notes, setNotes] = useState([]);
@@ -105,6 +106,7 @@ const addNote = (event) => {
         />
           <button type="submit">save note</button>
         </form>
+        <Footer />
       </div>
     );
 }
