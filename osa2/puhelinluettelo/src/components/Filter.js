@@ -8,11 +8,11 @@ const Filter = ({filterWith, onChange}) => {
 
     return (
         <>
-        filter shown with:
-        <input 
-            value={filterWith}
-            onChange={handleFilterChange}
-        />
+            filter shown with:
+            <input 
+                value={filterWith}
+                onChange={handleFilterChange}
+            />
         </>
     )
     }
