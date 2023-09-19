@@ -82,7 +82,7 @@ const App = () => {
   // eventhandler: updating setPhonenumber every time new char is typed to the input
   const handlePhonenumberChange = (event) => {
     console.log('handlePhonenumberChange: ', event.target.value)
-    setNewPhonenumber(event.target.value)
+    setNewPhonenumber(event.target.newPhonenumber)
   }
 
   // eventHandler: updating filterWith state
