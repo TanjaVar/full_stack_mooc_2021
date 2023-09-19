@@ -59,6 +59,10 @@ const App = () => {
           .then( response => {
             console.log(`AddName: ${personObject.name} new phonenum was successfully added to phonebook`)
             setPersons(persons.map(person => person.name.toLowerCase() !== personObject.name.toLowerCase() ? person : response.data))
+/*             setNotificationMessage(`${personObject.name} new phonenum was successfully added to phonebook`)
+            setTimeout( () => {
+              setNotificationMessage(null)
+            }, 4000)  */
           })
           .catch(error => {
             window.alert(`something went wrong while trying to update phonenumber`)
