@@ -115,7 +115,7 @@ const App = () => {
       <h2>NAME - NUMBER</h2>
       <ul>
         {persons.filter((person) => {
-          console.log('persons filtering: ', person, person.name, filterWith)
+          // console.log('persons filtering: ', person, person.name, filterWith)
           if (filterWith==="") {
             return person
           } else if (person.name.toLowerCase()===filterWith.toLowerCase()) {
