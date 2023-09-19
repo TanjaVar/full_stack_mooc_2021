@@ -145,7 +145,7 @@ const App = () => {
           }
         }).map(person => {
           return (
-            <ListGenerator person={person} key={person.name} deletePersonFromPhonebook={() => deletePerson(person.id, person.name)}/>
+            <ListGenerator person={person} key={person.id} deletePersonFromPhonebook={() => deletePerson(person.id, person.name)}/>
           )
         })}
       </ul>
