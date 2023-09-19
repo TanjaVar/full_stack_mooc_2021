@@ -55,7 +55,7 @@ const App = () => {
 
           // call phonebookservices updatePhoneNum function and update database
           phonebookService
-          .updatePhoneNum(i+1, personObject)
+          .updatePhoneNum(personObject.id, personObject)
           .then( response => {
             console.log(`AddName: ${personObject.name} new phonenum was successfully added to phonebook`)
             setPersons(persons.map(person => person.name.toLowerCase() !== personObject.name.toLowerCase() ? person : response.data))
