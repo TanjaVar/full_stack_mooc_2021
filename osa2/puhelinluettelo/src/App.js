@@ -76,7 +76,7 @@ const App = () => {
   //eventHandler: called when text in "name" field is changed
   const handleTextChange = (event) => {
     console.log('handleTextChange: ', event.target.value)
-    setNewName(event.target.value)
+    setNewName(event.target.newName)
   }
 
   // eventhandler: updating setPhonenumber every time new char is typed to the input
