@@ -103,6 +103,16 @@ const App = () => {
       .then(promise => {
         console.log('deletePerson function: promise fulfilled yay')
         setPersons(persons.map(person => person.id !== id ? person : promise.data))
+/*         setNotificationMessage("Person deleted!")
+        setTimeout( () => {
+          setNotificationMessage(null)
+        }, 4000) */
+      })
+      .catch(error => {
+/*         setNotificationMessage("something went wrong")
+          setTimeout( () => {
+            setNotificationMessage(null)
+          }, 4000) */
       })
       .catch(error => alert('something went wrong'))
     }
