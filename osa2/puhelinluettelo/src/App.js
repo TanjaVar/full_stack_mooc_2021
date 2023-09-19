@@ -47,10 +47,10 @@ const App = () => {
           and his/her phonenumber is already in phonebook. Do you wish to overwrite old number with new one?`
           )) {
           // find person who's phonenumber is going to be overwrited
-          const person = persons.find(person => person.id === personObject.name)
+          const person = persons.find(person => person.name === personObject.name)
           console.log("person found: ", person) // DEBUG
           // copy const person,but change it with new phonenumber
-          //const changedPerson = {...person, phonenum: personObject.newPhonenumber}
+          const changedPerson = {...person, phonenum: personObject.newPhonenumber}
           console.log("changedPerson: ", changedPerson) // DEBUG
 
           // call phonebookservices updatePhoneNum function and update database
