@@ -29,6 +29,7 @@ const App = () => {
   // function is called when 'submit' button is pressed on UI
   const addName = (event) => {
     event.preventDefault(); // prevent default onClick event
+    console.log("Event: ", event.target) // DEBUG
 
     //sets input values to object
     const personObject = {
