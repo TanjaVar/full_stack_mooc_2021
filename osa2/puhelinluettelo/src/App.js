@@ -124,7 +124,6 @@ const App = () => {
             setNotificationMessage(null)
           }, 4000) */
       })
-      .catch(error => alert('something went wrong'))
     }
   }
 
