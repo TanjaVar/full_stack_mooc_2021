@@ -12,6 +12,7 @@ const App = () => {
   const [newName, setNewName] = useState('');
   const [newPhonenumber, setNewPhonenumber] = useState('');
   const [persons, setPersons] = useState([])
+  const [notificationMessage, setNotificationMessage] = useState('')
 
   //use effect function which gets data from database and loads axios method only once when component loads
   useEffect(() => {
