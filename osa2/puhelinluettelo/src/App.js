@@ -129,6 +129,7 @@ const App = () => {
 
   return (
     <div>
+      <Notification message={notificationMessage}/>
       <Filter filterWith={filterWith} onChange={handleFilterChange}/>
       <h1>PHONEBOOK</h1>
       <h3>Add a name</h3>
