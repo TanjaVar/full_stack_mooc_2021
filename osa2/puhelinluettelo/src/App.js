@@ -42,7 +42,10 @@ const App = () => {
     for (let i = 0; i < persons.length; i++) {
       //console.log(newName) // DEBUG 
       if (newName.toLowerCase() === persons[i].name.toLowerCase()) {
-        if (window.confirm(`${personObject.name} and his/her phonenumber is already in phonebook. Do you wish to overwrite old number with new one?`)) {
+        if (window.confirm(
+          `${personObject.name} 
+          and his/her phonenumber is already in phonebook. Do you wish to overwrite old number with new one?`
+          )) {
           // find person who's phonenumber is going to be overwrited
           const person = persons.find(person => person.id === personObject.name)
           console.log("person found: ", person) // DEBUG
