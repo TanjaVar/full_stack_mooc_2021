@@ -3,6 +3,7 @@ import ListGenerator from './components/ListGenerator';
 import Filter from './components/Filter';
 import Form from './components/Form';
 import phonebookService from './services/phonebookPersons'
+import Notification from './components/Notification'
 
 //Exercise 2.11 working properly
 const App = () => {
