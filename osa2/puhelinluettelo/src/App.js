@@ -32,9 +32,10 @@ const App = () => {
 
     //sets input values to object
     const personObject = {
-      name: newName,
-      phonenum: newPhonenumber
+      name: event.target.newName,
+      phonenum: event.target.newPhonenumber
     };
+    console.log("newPhonenumber: ", personObject.newPhonenumber) // DEBUG
 
     let nameFound = false;
     for (let i = 0; i < persons.length; i++) {
