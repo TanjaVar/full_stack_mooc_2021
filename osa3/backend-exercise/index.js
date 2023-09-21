@@ -1,4 +1,5 @@
 const http = require("http")
+const app = express()
 
 let notes = [
 	{
@@ -17,6 +18,13 @@ let notes = [
 		important: true
 	}
 ]
+app.get('/', (req, res) => {
+	res.send('<h1>Hello World!</h1>')
+})
+
+app.get('api/notes', (req, res) => {
+	res.josn(notes)
+})
 const app = http.createServer((request, response) => {
 	response.writeHead(200, { 'Content-Type': 'text/plain'})
 	response.end('Hello World')
