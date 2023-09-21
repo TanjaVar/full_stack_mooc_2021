@@ -25,10 +25,6 @@ app.get('/', (req, res) => {
 app.get('api/notes', (req, res) => {
 	res.josn(notes)
 })
-const app = http.createServer((request, response) => {
-	response.writeHead(200, { 'Content-Type': 'text/plain'})
-	response.end('Hello World')
-})
 
 const PORT = 3001
 app.listen(PORT)
