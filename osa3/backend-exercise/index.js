@@ -1,3 +1,4 @@
+// web service module
 const http = require("http")
 const app = express()
 
@@ -18,6 +19,7 @@ let notes = [
 		important: true
 	}
 ]
+
 app.get('/', (req, res) => {
 	res.send('<h1>Hello World!</h1>')
 })
