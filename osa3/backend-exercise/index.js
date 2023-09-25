@@ -15,7 +15,7 @@ let notes = [
 	},
 	{
 		id: 3,
-		content: "GET and POST are the most important methids id HTTP protocol",
+		content: "GET and POST are the most important methods in HTTP protocol",
 		important: true
 	}
 ]
