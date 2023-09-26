@@ -54,9 +54,11 @@ const generateId = () => {
 	: 0
 	return maxId + 1
 }
+
+// post data to db
 app.post('/api/notes/', (req, res) => {
-	const note = req.body
-	console.log(note)
+	const body = req.body
+	
 	if (!body.content) {
 		return response.status(400).json(
 			{ 
