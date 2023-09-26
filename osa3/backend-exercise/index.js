@@ -32,9 +32,9 @@ app.get('/api/notes/:id', (req, res) => {
 	const note = notes.find(note => note.id === id)
 	// console.log(note)
 	if (note) {
-		response.json(note)
+		res.json(note)
 	} else {
-		response.status(404).end()
+		res.status(404).end()
 	}
 })
 
