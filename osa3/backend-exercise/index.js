@@ -28,6 +28,10 @@ app.get('/', (request, response) => {
 	response.send('<h1>Hello World!</h1>')
 })
 
+app.get('api/notes', (request, response) => {
+	res.json(notes)
+})
+
 //handles HTTP GET requests
 app.get('/api/notes', (req, res) => {
 	const id = Number(req.params.id)
