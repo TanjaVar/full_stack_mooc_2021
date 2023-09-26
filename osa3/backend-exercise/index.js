@@ -57,6 +57,13 @@ const generateId = () => {
 app.post('/api/notes/', (req, res) => {
 	const note = req.body
 	console.log(note)
+	if (!body.content) {
+		return response.status(400).json(
+			{ 
+				error: 'content missing'
+			}
+		)
+	}
 	res.json(note)
 })
 
