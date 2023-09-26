@@ -64,6 +64,15 @@ app.post('/api/notes/', (req, res) => {
 			}
 		)
 	}
+
+	const note = {
+		conetent: body.content,
+		improtant: body.important || false,
+		id: generateId()
+	}
+
+	notes = notes.concat(note)
+
 	res.json(note)
 })
 
