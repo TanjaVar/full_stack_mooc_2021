@@ -33,15 +33,15 @@ app.get('api/notes', (request, response) => {
 })
 
 //handles HTTP GET requests
-app.get('/api/notes', (req, res) => {
-	const id = Number(req.params.id)
+app.get('/api/notes', (request, response) => {
+	const id = Number(request.params.id)
 	// console.log(id)
 	const note = notes.find(note => note.id === id)
 	// console.log(note)
 	if (note) {
-		res.json(note)
+		response.json(note)
 	} else {
-		res.status(404).end()
+		response.status(404).end()
 	}
 })
 
