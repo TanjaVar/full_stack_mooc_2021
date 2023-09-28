@@ -16,6 +16,11 @@ const requestLogger = (request, response, next) => {
 	next()
 }
 
+// middleware for unknown endpoint
+const unknownEndpoint = (request, response) => {
+	response.status(404).send({error: 'Unknown endpoint'})
+}
+
 let notes = [
 	{
 		id: 1,
@@ -91,6 +96,10 @@ app.post('/api/notes/', (req, res) => {
 
 	res.json(note)
 })
+
+
+// if routes give error response
+app.use(unknownEndpoint)
 
 const PORT = 3002
 app.listen(PORT, () => {
