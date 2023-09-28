@@ -5,6 +5,16 @@ const app = express()
 
 //json parser
 app.use(express.json())
+// middleware
+app.use(requestLogger)
+
+const requestLogger = (request, response, next) => {
+	console.log('Method:', request.method)
+	console.log('Path: ', requerst.path)
+	console.log('Body: ', request.body)
+	console.log('-----')
+	next()
+}
 
 let notes = [
 	{
