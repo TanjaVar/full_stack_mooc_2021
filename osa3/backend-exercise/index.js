@@ -3,11 +3,6 @@ const { response } = require('express')
 const express = require('express')
 const app = express()
 
-//json parser
-app.use(express.json())
-// middleware
-app.use(requestLogger)
-
 const requestLogger = (request, response, next) => {
 	console.log('Method:', request.method)
 	console.log('Path: ', requerst.path)
@@ -15,6 +10,11 @@ const requestLogger = (request, response, next) => {
 	console.log('-----')
 	next()
 }
+
+//json parser
+app.use(express.json())
+// middleware
+app.use(requestLogger)
 
 // middleware for unknown endpoint
 const unknownEndpoint = (request, response) => {
