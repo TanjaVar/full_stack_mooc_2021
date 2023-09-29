@@ -103,7 +103,7 @@ app.post('/api/notes/', (req, res) => {
 // if routes give error response
 app.use(unknownEndpoint)
 
-const PORT = 3002
+const PORT = 3001
 app.listen(PORT, () => {
 	console.log(`Server running in port ${PORT}`)
 })
