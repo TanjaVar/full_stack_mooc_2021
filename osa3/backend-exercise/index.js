@@ -49,7 +49,7 @@ app.get('/api/notes', (request, response) => {
 	response.json(notes)
 })
 
-//handles HTTP GET requests
+// get all notes
 app.get('/api/notes', (request, response) => {
 	const id = Number(request.params.id)
 	// console.log(id)
@@ -62,7 +62,7 @@ app.get('/api/notes', (request, response) => {
 	}
 })
 
-// 204 no content
+// delete note from list
 app.delete('/api/notes/:id', (request, response) => {
 	const id = Number(request.params.id)
 	notes = notes.filter(note => note.id === id )
@@ -99,8 +99,7 @@ app.post('/api/notes/', (req, res) => {
 	res.json(note)
 })
 
-
-// if routes give error response
+// for unkonwn routes
 app.use(unknownEndpoint)
 
 const PORT = 3001
