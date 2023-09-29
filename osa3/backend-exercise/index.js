@@ -2,6 +2,7 @@
 const { response } = require('express')
 const express = require('express')
 const app = express()
+const cors = require('cors')
 
 const requestLogger = (request, response, next) => {
 	console.log('Method:', request.method)
@@ -11,6 +12,7 @@ const requestLogger = (request, response, next) => {
 	next()
 }
 
+app.use(cors())
 //json parser
 app.use(express.json())
 // middleware
