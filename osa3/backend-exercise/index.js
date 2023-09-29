@@ -12,6 +12,7 @@ const requestLogger = (request, response, next) => {
 	next()
 }
 
+// cors middleware
 app.use(cors())
 //json parser
 app.use(express.json())
@@ -88,6 +89,7 @@ app.post('/api/notes/', (req, res) => {
 		)
 	}
 
+
 	const note = {
 		conetent: body.content,
 		improtant: body.important || false,
@@ -102,7 +104,8 @@ app.post('/api/notes/', (req, res) => {
 // for unkonwn routes
 app.use(unknownEndpoint)
 
-const PORT = 3001
+// selects enviroment variable port or 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
 	console.log(`Server running in port ${PORT}`)
 })
