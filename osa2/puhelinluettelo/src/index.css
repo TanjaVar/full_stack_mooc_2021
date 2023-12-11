@@ -11,3 +11,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.box {
+  border: 1px solid black;
+  padding: 100px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  margin-left: 50px;
+  width: 500px;
+  border-radius: 5%;
+}
+
+.input {
+  margin: 6px;
+}
+
+button {
+  margin: 6px;
+  border-radius: 5%;
+  padding: 4px;
+}
+
+.delete {
+  background-color: red;
+}
+
+.phonebookitem {
+  margin: 5px;
+}
+
+.submitbutton {
+  border: 1px solid green;
+  border-radius: 9%;
+  color: green;
+  padding: 10px;
+  margin-top: 20px;
+}
