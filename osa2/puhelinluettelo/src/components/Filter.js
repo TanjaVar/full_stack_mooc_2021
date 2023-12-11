@@ -1,4 +1,5 @@
 import React from 'react'
+import Card from '@mui/material/Card'
 
 const Filter = ({filterWith, onChange}) => {
 
@@ -8,11 +9,13 @@ const Filter = ({filterWith, onChange}) => {
 
     return (
         <>
-            filter shown with:
-            <input 
-                value={filterWith}
-                onChange={handleFilterChange}
-            />
+            <Card sx={{padding: "10px"}} variant="outlined">
+                Filter
+                <input class="input"
+                    value={filterWith}
+                    onChange={handleFilterChange}
+                />
+            </Card>
         </>
     )
     }
