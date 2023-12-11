@@ -2,18 +2,23 @@
   "persons": [
     {
       "name": "Maria",
-      "phonenum": "124135235",
+      "phonenum": "0505345346",
       "id": 1
     },
     {
       "name": "Tero",
-      "phonenum": "12",
+      "phonenum": "05069234345",
       "id": 2
     },
     {
       "name": "Tuukka",
-      "phonenum": "12",
+      "phonenum": "0405346342",
       "id": 3
+    },
+    {
+      "name": "mari",
+      "phonenum": "050245346346",
+      "id": 4
     }
   ]
 }
