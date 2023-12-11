@@ -1,19 +1,24 @@
 import React from 'react';
+import { Card } from '@mui/material';
 
 const Form = ({addName, newName, handleTextChange, newPhonenumber, handlePhonenumberChange}) => {
     return (
         <form onSubmit={addName}>
-                name:  
-                <input 
-                    newName={newName} 
-                    onChange={handleTextChange}
-                />
-                phonenumber: 
-                <input 
-                    newPhonenumber={newPhonenumber} 
-                    onChange={handlePhonenumberChange}
-                />
-                <button type="submit">Add contact</button>
+                <Card variant="transaparent">
+                    name:
+                    <input class="input"
+                        newName={newName} 
+                        onChange={handleTextChange}
+                    />       
+                </Card>
+                <Card variant="transaparent">
+                    phonenumber: 
+                    <input class="input"
+                        newPhonenumber={newPhonenumber} 
+                        onChange={handlePhonenumberChange}
+                    />
+                </Card>
+                <button class="submitbutton" type="submit">ADD CONTACT</button>
         </form>
     )
 }
