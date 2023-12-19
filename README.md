@@ -1,1 +1,1 @@
-# full_stack_mooc
+# full_stack_open
